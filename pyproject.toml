@@ -1,0 +1,36 @@
+[project]
+name = "taskify"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Lazar Mijovic", email = "lazar.mijovic@valyours.de" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi[standard]>=0.142.0",
+]
+
+[dependency-groups]
+dev = [
+    "black>=26.5.1",
+    "ruff>=0.16.9",
+]
+#black je formatter, samo gleda kako kod izgleda
+[tool.black]
+line-length = 88
+target-version = ["py313"]
+#lomi redove duze od 88 karaktera blackov default
+
+#ruff je linter, cita kod i trazi greske ili lose prakse
+[tool.ruff]
+line-length = 88
+#isto lomi redove duze od 88 char
+
+#linter je alat koji radi lint, usustini lint analizira kod bez pokretanja i trazi verovatne greske, sumnjive kosntr
+# i krsenje konvencija(Dolazi od programa lint za c koji je hvatao greske koje kompajler propusta)
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+#koja pravila ruff proverava E su pycodestyle greske(razmaci,praazni redovi),
+# F je pyflakes(neiskorisceni redovi, nedef prom)
+# I je isort(Redosled importa)
